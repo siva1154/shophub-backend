@@ -280,7 +280,7 @@ public class SecurityConfig {
 
             List.of(
                 "http://localhost:5173",
-              "https://shophub-frontend-seven.vercel.app/login"
+              "https://shophub-frontend-seven.vercel.app"
             )
         );
 
