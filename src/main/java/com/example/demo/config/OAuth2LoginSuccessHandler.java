@@ -93,10 +93,9 @@ public class OAuth2LoginSuccessHandler
 
             if (user.isBanned()) {
 
-                response.sendRedirect(
-
-                    "http://localhost:5173/login?error=banned"
-                );
+            	response.sendRedirect(
+            		    "https://shophub-frontend-seven.vercel.app/login?error=banned"
+            		);
 
                 return;
             }
@@ -212,12 +211,9 @@ public class OAuth2LoginSuccessHandler
         ========================= */
 
         response.sendRedirect(
-
-            "http://localhost:5173/oauth-success"
-
-            + "?token=" + token
-
-            + "&role=" + user.getRole()
-        );
+        	    "https://shophub-frontend-seven.vercel.app/oauth-success"
+        	    + "?token=" + token
+        	    + "&role=" + user.getRole()
+        	);
     }
 }
