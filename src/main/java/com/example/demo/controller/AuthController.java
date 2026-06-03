@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -528,7 +529,7 @@ public class AuthController {
                     .body("OTP has expired");
         }
 
-        User user = new User();
+        User user = new User();  
 
         user.setEmail(
                 registrationOtp.getEmail()
@@ -590,5 +591,17 @@ public class AuthController {
         return ResponseEntity.ok(
                 "OTP resent successfully"
         );
+    }
+    
+    @GetMapping("/test-mail")
+    public String testMail() {
+
+        emailService.sendEmail(
+            "your-email@gmail.com",
+            "Test",
+            "Brevo test"
+        );
+
+        return "Mail Sent";
     }
 }
