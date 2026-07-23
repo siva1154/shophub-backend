@@ -249,13 +249,10 @@ public class SecurityConfig {
          .exceptionHandling(ex -> ex
              .authenticationEntryPoint((request, response, authException) -> {
                  // Only return 401 for API paths, let web paths redirect
-                 if (request.getRequestURI().startsWith("/api/")) {
                      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                      response.setContentType("application/json");
                      response.getWriter().write("{\"error\":\"Unauthorized\",\"message\":\"Authentication required\"}");
-                 } else {
-                     response.sendRedirect("/login");
-                 }
+                 
              })
          )
             /* =========================

@@ -221,7 +221,7 @@ public class Product {
   
   @OneToMany( mappedBy = "product", cascade = CascadeType.ALL)
   @JsonIgnore
-		private List<Review> reviews;
+  private List<Review> reviews;
 
   @Lob
 //  @Column(name = "image_date", columnDefinition = "LONGBLOB")
