@@ -531,23 +531,17 @@ public class AuthController {
 
         User user = new User();  
 
-        user.setEmail(
-                registrationOtp.getEmail()
-        );
+        user.setEmail( registrationOtp.getEmail() );
 
-        user.setPassword(
-                registrationOtp.getPassword()
-        );
+        user.setPassword( registrationOtp.getPassword()  );
 
         user.setRole("USER");
 
         user.setActive(true);
 
-        User savedUser =
-                userRepo.save(user);
+        User savedUser =   userRepo.save(user);
 
-        UserProfile profile =
-                new UserProfile();
+        UserProfile profile =   new UserProfile();
 
         profile.setUser(savedUser);
 
@@ -565,8 +559,7 @@ public class AuthController {
             @RequestParam String email
     ) {
 
-        RegistrationOtp registrationOtp =
-                registrationOtpRepo
+        RegistrationOtp registrationOtp =   registrationOtpRepo
                         .findByEmail(email)
                         .orElseThrow(() ->
                                 new RuntimeException(
