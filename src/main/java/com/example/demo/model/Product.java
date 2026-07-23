@@ -224,6 +224,7 @@ public class Product {
   private List<Review> reviews;
 
   @Lob
+  @JsonIgnore
 //  @Column(name = "image_date", columnDefinition = "LONGBLOB")
   private byte[] imageDate;
     
