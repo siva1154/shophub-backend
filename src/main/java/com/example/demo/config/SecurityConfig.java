@@ -35,6 +35,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.example.demo.security.JwtFilter;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -239,6 +241,23 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
 
+            
+            /* =========================
+            EXCEPTION HANDLING
+         ========================= */
+
+         .exceptionHandling(ex -> ex
+             .authenticationEntryPoint((request, response, authException) -> {
+                 // Only return 401 for API paths, let web paths redirect
+                 if (request.getRequestURI().startsWith("/api/")) {
+                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                     response.setContentType("application/json");
+                     response.getWriter().write("{\"error\":\"Unauthorized\",\"message\":\"Authentication required\"}");
+                 } else {
+                     response.sendRedirect("/login");
+                 }
+             })
+         )
             /* =========================
                OAUTH2 LOGIN
             ========================= */

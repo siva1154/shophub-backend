@@ -87,25 +87,20 @@ public class JwtFilter
 
                 ||
 
-                requestURI.startsWith(
-                        "/oauth2"
-                )
+                requestURI.startsWith( "/oauth2" )
                 
                 ||
-                requestURI.equals(
-                    "/api/auth/verify-registration"
-                )
+                requestURI.equals("/api/auth/verify-registration")
                 
                 ||
-                requestURI.equals(
-                	    "/api/auth/resend-registration-otp"
-                	)
+                requestURI.equals(  "/api/auth/resend-registration-otp")
 
                 ||
 
-                requestURI.startsWith(
-                        "/login"
-                );
+                requestURI.startsWith(  "/login" )
+                
+                || requestURI.equals("/api/products")
+                || (requestURI.startsWith("/api/product/") && request.getMethod().equals("GET"));
 
         /* ==========================================
            SKIP ONLY PUBLIC ROUTES

@@ -220,6 +220,7 @@ public class Product {
   private String imageType;
   
   @OneToMany( mappedBy = "product", cascade = CascadeType.ALL)
+  @JsonIgnore
 		private List<Review> reviews;
 
   @Lob
